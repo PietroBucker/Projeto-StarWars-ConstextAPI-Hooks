@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import Loading from '../components/Loading';
 import Table from '../components/Table';
-import useApiRequest from '../hooks/useApiRequest';
+import ApiContext from '../context/ApiContext';
 
 export default function Home() {
-  const api = useApiRequest();
-
-  useEffect(() => {
-    api.request();
-  }, []);
+  const { loading } = useContext(ApiContext);
 
   return (
-    <Table />
+    <div>
+      {loading ? <Loading /> : <Table />}
+    </div>
   );
 }
