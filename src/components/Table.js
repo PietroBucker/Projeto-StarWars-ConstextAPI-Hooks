@@ -5,26 +5,16 @@ import Search from './Search';
 export default function Table() {
   const { filtered } = useContext(ApiContext);
 
+  const titlesTable = ['Name', 'Rotation Period', 'Orbital Perio', 'Diameter',
+    'Climate', 'Gravity', 'Terrain', 'Surface Water',
+    'Population', 'Films', 'Created', 'Edited', 'URL'];
   return (
     <div>
       <Search />
       <table>
         <thead>
-
           <tr>
-            <th>Name</th>
-            <th>Rotation Period</th>
-            <th>Orbital Period</th>
-            <th>Diameter</th>
-            <th>Climate</th>
-            <th>Gravity</th>
-            <th>Terrain</th>
-            <th>Surface Water</th>
-            <th>Population</th>
-            <th>Films</th>
-            <th>Created</th>
-            <th>Edited</th>
-            <th>URL</th>
+            {titlesTable.map((title, ind) => (<th key={ ind }>{title}</th>))}
           </tr>
         </thead>
         <tbody>
