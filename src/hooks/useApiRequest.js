@@ -5,6 +5,7 @@ export default function useApiRequest() {
   const [api, setApi] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filtered, setFiltered] = useState([]);
+  const [test, setTest] = useState([]);
 
   const request = async () => {
     const response = await fetch('https://swapi.dev/api/planets');
@@ -21,7 +22,7 @@ export default function useApiRequest() {
 
   useEffect(() => {
     request();
-  }, []);
+  }, [filtered]);
 
   return {
     api,
@@ -30,5 +31,7 @@ export default function useApiRequest() {
     setLoading,
     filtered,
     setFiltered,
+    test,
+    setTest,
   };
 }

@@ -6,7 +6,8 @@ import useApiRequest from '../hooks/useApiRequest';
 export default function ApiProvider({ children }) {
   // const [api, setApi] = useState([]);
   // const [loading, setLoading] = useState(true);
-  const { api, setApi, loading, setLoading, filtered, setFiltered } = useApiRequest();
+  const { api, setApi, loading, setLoading,
+    filtered, setFiltered, test, setTest } = useApiRequest();
 
   return (
     <ApiContext.Provider
@@ -16,7 +17,9 @@ export default function ApiProvider({ children }) {
         loading,
         setLoading,
         filtered,
-        setFiltered } }
+        setFiltered,
+        test,
+        setTest } }
     >
       {children}
     </ApiContext.Provider>

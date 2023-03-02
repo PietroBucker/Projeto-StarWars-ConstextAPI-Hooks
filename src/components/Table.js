@@ -3,7 +3,7 @@ import ApiContext from '../context/ApiContext';
 import Search from './Search';
 
 export default function Table() {
-  const { filtered } = useContext(ApiContext);
+  const { test } = useContext(ApiContext);
 
   const titlesTable = ['Name', 'Rotation Period', 'Orbital Perio', 'Diameter',
     'Climate', 'Gravity', 'Terrain', 'Surface Water',
@@ -18,9 +18,9 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          {filtered.map((element) => (
+          {test.map((element) => (
             <tr key={ element.name }>
-              <td>{element.name}</td>
+              <td data-testid="planet-name">{element.name}</td>
               <td>{element.rotation_period}</td>
               <td>{element.orbital_period}</td>
               <td>{element.diameter}</td>
