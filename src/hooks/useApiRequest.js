@@ -22,7 +22,7 @@ export default function useApiRequest() {
 
   useEffect(() => {
     request();
-  }, [filtered]);
+  }, []);
 
   return {
     api,

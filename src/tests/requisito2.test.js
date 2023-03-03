@@ -12,8 +12,9 @@ describe('requisito 2', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockApi)
     })
-    render(<ApiProvider><App /></ApiProvider>);
+    const { debug } = render(<ApiProvider><App /></ApiProvider>);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.getAllByText(/loading/i))
     expect(global.fetch).toHaveBeenCalled()
     expect(global.fetch).toHaveBeenCalledTimes(1)
     expect(await screen.findByText('STAR WARS')).toBeInTheDocument();
@@ -71,8 +72,8 @@ describe('requisito 2', () => {
     expect(await screen.findByText(/rotation_period igual a 18/i))
     expect(screen.getByRole('cell', {name: /endor/i})).toBeInTheDocument();
   
-
-    
+   
+   
 
     // Botao de remover apenas 1 filtro
     const view = screen.getByText(/rotation_period igual a 18/i);
@@ -86,6 +87,7 @@ describe('requisito 2', () => {
     const row4 = screen.getAllByRole('row');
     expect(row4).toHaveLength(11);
 
+   
     // filtro de ordenaçao
     const oredenar = screen.getByRole('combobox', {name: /ordenar/i})
     const asc = screen.getByRole('radio', {name: /ascendente/i})
@@ -112,7 +114,24 @@ describe('requisito 2', () => {
     expect(row6[2].innerHTML).toContain('Naboo');
     expect(row6[3].innerHTML).toContain('Alderaan');
 
+    userEvent.selectOptions(columFilter, 'orbital_period')
+    userEvent.selectOptions(operador, 'igual a')
+    userEvent.clear(valor)
+    userEvent.type(valor, '18')
+    userEvent.click(btnFilter);
+    
+    userEvent.selectOptions(columFilter, 'surface_water')
+    userEvent.selectOptions(operador, 'igual a')
+    userEvent.clear(valor)
+    userEvent.type(valor, '18')
+    userEvent.click(btnFilter);
+
+    expect(await screen.findByText(/orbital_period igual a 18/i))
+    expect(await screen.findByText(/surface_water igual a 18/i))
   
+
+    const rowLast = await screen.findAllByRole('row');
+    expect(rowLast).toHaveLength(1);
   })
 
 })

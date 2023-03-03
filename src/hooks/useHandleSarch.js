@@ -34,10 +34,8 @@ export default function useHandleSarch() {
           return Number(element[sel.colum]) > Number(sel.value);
         case 'menor que':
           return Number(element[sel.colum]) < Number(sel.value);
-        case 'igual a':
-          return Number(element[sel.colum]) === Number(sel.value);
         default:
-          return true;
+          return Number(element[sel.colum]) === Number(sel.value);
         }
       });
       return newArr.every((el) => el);
