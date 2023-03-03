@@ -10,6 +10,7 @@ export default function Table() {
     'Population', 'Films', 'Created', 'Edited', 'URL'];
   return (
     <div>
+      <h1>STAR WARS</h1>
       <Search />
       <table>
         <thead>

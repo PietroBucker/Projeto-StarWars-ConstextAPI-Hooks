@@ -8,8 +8,8 @@ export default function useApiRequest() {
   const [test, setTest] = useState([]);
 
   const request = async () => {
-    const response = await fetch('https://swapi.dev/api/planets');
     try {
+      const response = await fetch('https://swapi.dev/api/planets');
       const data = await response.json();
       // console.log(data.results);
       setApi(data.results);

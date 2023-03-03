@@ -24,6 +24,7 @@ export default function Search() {
       </label>
 
       <label htmlFor="columnFilter">
+        Coluna
         <select
           name="columnFilter"
           id="columnFilter"
@@ -73,13 +74,11 @@ export default function Search() {
                 surface_water
               </option>
             )}
-          {/* {opt.map((element, ind) => (
-            <option key={ ind } value={ element }>{ element }</option>
-          ))} */}
         </select>
       </label>
 
       <label htmlFor="comparisonFilter">
+        Operador
         <select
           name="comparisonFilter"
           id="comparisonFilter"
@@ -96,6 +95,7 @@ export default function Search() {
 
       <label htmlFor="valueFilter">
         <input
+          type="number"
           id="valueFilter"
           name="valueFilter"
           value={ valueFilter }
@@ -128,18 +128,21 @@ export default function Search() {
       >
         Remover todas filtragens
       </button>
-
-      <select
-        data-testid="column-sort"
-        name="columSort"
-        value={ filter.columSort }
-        onChange={ handleChange }
-        onClick={ handleChange }
-      >
-        {options.map((element, ind) => (
-          <option key={ ind } value={ element }>{ element }</option>
-        ))}
-      </select>
+      <label htmlFor="columSort">
+        Ordenar
+        <select
+          data-testid="column-sort"
+          id="columSort"
+          name="columSort"
+          value={ filter.columSort }
+          onChange={ handleChange }
+          onClick={ handleChange }
+        >
+          {options.map((element, ind) => (
+            <option key={ ind } value={ element }>{ element }</option>
+          ))}
+        </select>
+      </label>
 
       <label data-testid="column-sort-input-asc" htmlFor="conditionSort">
         <input

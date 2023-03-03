@@ -44,7 +44,7 @@ export default function useHandleSarch() {
     });
     // setFiltered(mult);
     setTest(mult);
-  }, [filter.filters, setFiltered, opt, filter.columSort, setTest]);
+  }, [filter, opt, setTest]);
 
   const handleChangeFilters = ({ target }) => {
     const { value } = target;
@@ -57,7 +57,6 @@ export default function useHandleSarch() {
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    console.log(value);
     setFilter({
       ...filter,
       [name]: value,
@@ -86,7 +85,6 @@ export default function useHandleSarch() {
   const hadleRemoveFilter = ({ target }) => {
     const { name } = target;
     const teste = selected.filter((el) => !el.colum.includes(name));
-    console.log(teste);
     selected = teste;
     setFilter({
       ...filter,
@@ -100,30 +98,8 @@ export default function useHandleSarch() {
     setOpt([...opt]);
   };
 
-  // const sortString = (newArr) => {
-  //   const n = -1;
-  //   console.log('aqui');
-  //   if (filter.conditionSort === 'ASC') {
-  //     const sorted = newArr.sort((a, b) => {
-  //       if (a[filter.columSort] > b[filter.columSort]) return 1;
-  //       if (a[filter.columSort] < b[filter.columSort]) return n;
-  //       return 0;
-  //     });
-  //     setTest(sorted);
-  //   }
-  //   if (filter.conditionSort === 'DESC') {
-  //     const sorted = newArr.sort((a, b) => {
-  //       if (a.name > b.name) return n;
-  //       if (a.name < b.name) return 1;
-  //       return 0;
-  //     });
-  //     setTest(sorted);
-  //   }
-  // };
-
   const sortNumbers = (newArr) => {
     const n = -1;
-    console.log('aqui');
     if (filter.conditionSort === 'ASC') {
       const sorted = newArr.sort((a, b) => {
         if (a[filter.columSort] > b[filter.columSort]) return 1;
